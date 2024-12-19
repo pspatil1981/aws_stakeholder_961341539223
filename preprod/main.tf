@@ -20,3 +20,9 @@ module "vpc" {
     "kubernetes.io/cluster/dev-demo" = "owned"
   }
 }
+
+module "ec2" {
+  source = "git@github.com:pspatil1981/aws_terraform_module_radical.git//ec2?ref=v1.1"
+  instance_type = "t2.micro"
+   aws_region  =   "ap-south-1"
+}

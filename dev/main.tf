@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "git@github.com:pspatil1981/aws_terraform_module_radical.git//modules/vpc?ref=v1.1"
+  source = "git@github.com:pspatil1981/aws_terraform_module_radical.git//vpc?ref=v1.1"
 
   env             = "dev"
   azs             = ["ap-south-1a", "ap-south-1b"]
@@ -19,4 +19,10 @@ module "vpc" {
     "kubernetes.io/role/elb"         = 1
     "kubernetes.io/cluster/dev-demo" = "owned"
   }
+}
+
+module "ec2" {
+  source = "git@github.com:pspatil1981/aws_terraform_module_radical.git//ec2?ref=v1.1"
+  instance_type = "t2.micro"
+   aws_region  =   "ap-south-1"
 }
